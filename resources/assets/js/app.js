@@ -7,7 +7,8 @@
 
 require('./bootstrap');
 
-window.Vue = require('vue');
+import Vue from 'vue';
+import Bundle from './bundle';
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -17,6 +18,14 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 
-const app = new Vue({
+/*const app = new Vue({
     el: '#app'
+});*/
+
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
 });
+
+const bundle = new Bundle();
