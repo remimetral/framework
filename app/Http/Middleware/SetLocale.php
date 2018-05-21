@@ -2,9 +2,8 @@
 
 namespace App\Http\Middleware;
 
-use App;
-use Config;
 use Closure;
+use Config;
 use Session;
 use View;
 
@@ -24,25 +23,40 @@ class SetLocale
      * @param  \Closure  $next
      * @return mixed
      */
-     public function handle($request, Closure $next)
-     {
-         if (Session::has('locale')) {
-             $locale = Session::get('locale');
-         } else {
-             $locale = substr($request->getPreferredLanguage(), 0, 2);
+    public function handle($request, Closure $next)
+    {
+        if (Session::has('locale')) {
+            $locale = Session::get('locale');
+        } else {
+            $locale = substr($request->getPreferredLanguage(), 0, 2);
 
-             if( in_array($locale, $this->lang) ) {
-                 Session::put('locale', $locale);
-             } else {
-                 Session::put('locale', Config::get('app.locale'));
-             }
-         }
+            if( in_array($locale, $this->lang) ) {
+                Session::put('locale', $locale);
+            } else {
+                Session::put('locale', Config::get('app.locale'));
+            }
+        }
 
-         /**
-          * Set the local config.
-          */
-         Config::set('app.locale', $locale);
+        /**
+         * Set the local config.
+         */
+        Config::set('app.locale', $locale);
 
-         return $next($request);
-     }
+        /**
+         * Share the config to the view.
+         */
+        if ($locale == 'fr') {
+            View::share([
+                'lang' => 'fr',
+                'langreverse' => 'en'
+            ]);
+        } else {
+            View::share([
+                'lang' => 'en',
+                'langreverse' => 'fr'
+            ]);
+        }
+
+        return $next($request);
+    }
 }
