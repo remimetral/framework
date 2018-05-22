@@ -2,11 +2,12 @@
 // Fonts
 //@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
 
-// Variables
-@import "variables";
-
 // Bootstrap
-//@import '~bootstrap/scss/bootstrap';
+@import '~bootstrap/scss/bootstrap';
+
+// Bulma
+// @import "~bulma";
+// @import "~bulma-calendar";
 
 // Common
 @import "common/variables";
@@ -16,15 +17,12 @@
 //@import "common/fonts";
 
 // Modules
-@import "components/nav";
+@import "components/navbar";
 
 // Pages
+@import "pages/auth";
 @import "pages/home";
 @import "pages/about";
-
-// Bulma
-@import "~bulma";
-@import "~bulma-calendar";
 
 .calendar {
   .calendar-date {

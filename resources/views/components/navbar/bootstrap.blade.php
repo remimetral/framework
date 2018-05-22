@@ -7,23 +7,23 @@
 	<div class="collapse navbar-collapse" id="navbarSupportedContent">
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item active">
-				<a class="nav-link home ajax" href="{{ route('home-'.$lang) }}">@lang('navigation.home') <span class="sr-only">(current)</span></a>
+				<a class="nav-link home ajax" href="{{ route('home-'.$lang) }}">@lang('navigation.title.home') <span class="sr-only">(current)</span></a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link about ajax" href="{{ route('about-'.$lang) }}">@lang('navigation.about')</a>
+				<a class="nav-link about ajax" href="{{ route('about-'.$lang) }}">@lang('navigation.title.about')</a>
 			</li>
 		</ul>
         <ul class="navbar-nav ml-auto">
 			@if (Auth::guest())
-				<li class="nav-item"><a class="nav-link login ajax" href="{{ route('login') }}">Login</a></li>
-				<li class="nav-item"><a class="nav-link register ajax" href="{{ route('register') }}">Register</a></li>
+				<li class="nav-item"><a class="nav-link login ajax" href="{{ route('login') }}">@lang('navigation.title.login')</a></li>
+				<li class="nav-item"><a class="nav-link register ajax" href="{{ route('register') }}">@lang('navigation.title.register')</a></li>
 			@else
 				<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								{{ Auth::user()->name }} <span class="caret"></span>
 						</a>
 						<div class="dropdown-menu" role="menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="#">Backend</a>
+							<a class="dropdown-item" href="#">@lang('navigation.title.admin')</a>
 							<div class="dropdown-divider"></div>
 							<a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
 							<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -33,12 +33,12 @@
 				</li>
 			@endif
 			@if ($lang == 'en')
-				<li class="nav-item lang">
-					<a class="nav-link" href="{{ route('home-fr') }}">FR</a>
+				<li class="nav-item">
+					<a class="nav-link lang" href="{{ route('home-fr') }}">FR</a>
 				</li>
 			@else
-				<li class="nav-item lang">
-					<a class="nav-link" href="{{ route('home-en') }}">EN</a>
+				<li class="nav-item">
+					<a class="nav-link lang" href="{{ route('home-en') }}">EN</a>
 				</li>
 			@endif
 			<!--{!! Form::open(['method' => 'POST', 'route' => 'changelocale', 'class' => 'form-inline navbar-select']) !!}

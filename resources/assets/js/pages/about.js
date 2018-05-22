@@ -26,9 +26,9 @@ export default class About {
      */
     init() {
         this.$document.on('page_change', this.check.bind(this));
-        if (this.id == this.current) {
+        /*if (this.id == this.current) {
             this.app = new Vue({el: '#app'});
-        }
+        }*/
     }
 
     /**
@@ -53,7 +53,7 @@ export default class About {
     }
 
     reInit() {
-        this.app = new Vue({el: '#app'});
+        //this.app = new Vue({el: '#app'});
         this.$document.title = this.page.find('.page_title').val();
     }
 

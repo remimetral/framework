@@ -1,11 +1,13 @@
 
 //
 //  =========================================================
-//  Page About
+//  Pages Authentification
 //  =========================================================
 //
 
-.container_page.about {
+.container_page.login,
+.container_page.password,
+.container_page.register, {
 
 	.bg_page {
 		background: #fff;
