@@ -5,10 +5,11 @@ namespace App\Http\Controllers;
 use App;
 use Config;
 use Redirect;
+use Request;
 use Route;
+use Session;
 use View;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
+
 use App\Http\Controllers\Base\Controller;
 
 class AppController extends Controller {

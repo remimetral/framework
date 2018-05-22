@@ -25,7 +25,7 @@
 </head>
 <body>
 	<!-- Navigation -->
-	@include('components/navbar')
+	@include('components/navbar/bulma')
 
 	<div id="wrap">
 		<div id="pt-main" class="pt-perspective">
