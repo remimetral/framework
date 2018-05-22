@@ -13,10 +13,12 @@ return [
 	|
 	*/
 
-	'home' => 'Accueil',
-	'route_home' => 'accueil',
-
-	'about' => 'À Propos',
-	'route_about' => 'a-propos',
+	'title' => [
+        'home' 		=> 'Accueil',
+        'about'   	=> 'À Propos',
+        'login'  	=> 'Connection',
+        'register'	=> 'Inscription',
+		'admin'  	=> 'Admin',
+    ]
 
 ];
