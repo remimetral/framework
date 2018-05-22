@@ -1,4 +1,5 @@
 
+import Vue from 'vue';
 import { deeplink } from '../bundle';
 
 export default class About {
@@ -17,6 +18,7 @@ export default class About {
         this.id = 'about';
         this.page = null;
         this.$document = $(document);
+        this.current = deeplink.$pages.eq(deeplink.current).find('.page_menu_id').val();
     }
 
     /**
@@ -24,7 +26,9 @@ export default class About {
      */
     init() {
         this.$document.on('page_change', this.check.bind(this));
-        //window.addEventListener("reload", this.check);
+        if (this.id == this.current) {
+            this.app = new Vue({el: '#app'});
+        }
     }
 
     /**
@@ -49,16 +53,17 @@ export default class About {
     }
 
     reInit() {
-      this.$document.title = this.page.find('.page_title').val();
+        this.app = new Vue({el: '#app'});
+        this.$document.title = this.page.find('.page_title').val();
     }
 
     animationIn() {
-      //TweenMax.from(this.page.find('.bg_page'), 1, { alpha: 0, ease: Linear.easeOut });
-      TweenMax.from(this.page.find('.content'), 1, { x: -100, alpha: 0, ease: Expo.easeOut, delay: deeplink.delayBeforeAnimIn });
-      deeplink.reInitAnimation(deeplink.delayReInit);
+        //TweenMax.from(this.page.find('.bg_page'), 1, { alpha: 0, ease: Linear.easeOut });
+        TweenMax.from(this.page.find('.content'), 1, { x: -100, alpha: 0, ease: Expo.easeOut, delay: deeplink.delayBeforeAnimIn });
+        deeplink.reInitAnimation(deeplink.delayReInit);
     }
 
     animationOut() {
-      TweenMax.to(this.page.find('.content'), 1, { x: -100, alpha: 0, ease: Expo.easeOut });
+        TweenMax.to(this.page.find('.content'), 1, { x: -100, alpha: 0, ease: Expo.easeOut });
     }
 }

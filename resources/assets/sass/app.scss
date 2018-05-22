@@ -6,7 +6,7 @@
 @import "variables";
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+//@import '~bootstrap/scss/bootstrap';
 
 // Common
 @import "common/variables";
@@ -21,3 +21,24 @@
 // Pages
 @import "pages/home";
 @import "pages/about";
+
+// Bulma
+@import "~bulma";
+@import "~bulma-calendar";
+
+.calendar {
+  .calendar-date {
+    text-transform: capitalize;
+  }
+}
+
+.slide-fade-enter-active,
+.slide-fade-leave-active {
+  transition: all .4s ease;
+}
+
+.slide-fade-enter,
+.slide-fade-leave-to {
+  transform: scale(.9);
+  opacity: 0;
+}

@@ -31,6 +31,7 @@ export default class Deeplink {
         this.firstload          = true;
         this.draggable          = null;
         this.chrome_ios         = (navigator.userAgent.match('CriOS')) ? false : true;
+        this.eventLoad          = new CustomEvent('load', { detail: 'test' });
     }
 
     /**
@@ -63,7 +64,8 @@ export default class Deeplink {
         //$(window).resize(this.onResize);
         document.addEventListener('resize', this.onResize.bind(this));
 
-        this.$document.trigger('page_change', [this.$pages.eq(this.current), 'reinit']);
+        window.dispatchEvent(this.eventLoad);
+        //this.$document.trigger('page_init', [this.$pages.eq(this.current)]);
     }
 
     deeplinkEvent() {
@@ -102,12 +104,12 @@ export default class Deeplink {
     }
 
     updateBtnLang(url) {
-        $('#navigation .lang a').attr('href', url);
+        $('#navigation .lang').attr('href', url);
     }
 
     hightlightMenu(menu) {
-        TweenMax.to($('#navigation .nav-link'), 1, {className:"-=active"});
-        TweenMax.to($('#navigation .nav-link.' + menu), 1, {className:"+=active"});
+        TweenMax.to($('#navigation .navbar-item'), 1, {className:"-=active"});
+        TweenMax.to($('#navigation .nnavbar-item.' + menu), 1, {className:"+=active"});
     }
 
     updatePageTitle(title) {

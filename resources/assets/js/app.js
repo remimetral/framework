@@ -9,6 +9,7 @@ require('./bootstrap');
 
 import Vue from 'vue';
 import Bundle from './bundle';
+import bulmaCalendar from 'bulma-calendar/dist/bulma-calendar'
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -16,11 +17,9 @@ import Bundle from './bundle';
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('modal', require('./components/Modal.vue'));
+Vue.component('calendar', require('./components/Calendar.vue'));
 
-/*const app = new Vue({
-    el: '#app'
-});*/
 
 $.ajaxSetup({
     headers: {
