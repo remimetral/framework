@@ -110,8 +110,8 @@ export default class Deeplink {
     }
 
     hightlightMenu(menu) {
-        TweenMax.to($('#navigation .ajax'), 1, {className:"-=active"});
-        TweenMax.to($('#navigation .ajax.' + menu), 1, {className:"+=active"});
+        TweenMax.to($('#navigation .ajax'), 1, {className:"-=active is-active"});
+        TweenMax.to($('#navigation .ajax.' + menu), 1, {className:"+=active is-active"});
     }
 
     updatePageTitle(title) {

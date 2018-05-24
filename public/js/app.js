@@ -64359,8 +64359,8 @@ var Deeplink = function () {
     }, {
         key: 'hightlightMenu',
         value: function hightlightMenu(menu) {
-            __WEBPACK_IMPORTED_MODULE_1_gsap___default.a.to(__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#navigation .ajax'), 1, { className: "-=active" });
-            __WEBPACK_IMPORTED_MODULE_1_gsap___default.a.to(__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#navigation .ajax.' + menu), 1, { className: "+=active" });
+            __WEBPACK_IMPORTED_MODULE_1_gsap___default.a.to(__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#navigation .ajax'), 1, { className: "-=active is-active" });
+            __WEBPACK_IMPORTED_MODULE_1_gsap___default.a.to(__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#navigation .ajax.' + menu), 1, { className: "+=active is-active" });
         }
     }, {
         key: 'updatePageTitle',

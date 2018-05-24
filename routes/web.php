@@ -22,3 +22,7 @@ Route::get('/accueil', ['as' => 'home-fr', 'uses' => 'AppController@home']);
 Route::get('/a-propos', ['as' => 'about-fr', 'uses' => 'AppController@about']);
 
 Route::post('changelocale', ['as' => 'changelocale', 'uses' => 'AppController@changeLocale']);
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});

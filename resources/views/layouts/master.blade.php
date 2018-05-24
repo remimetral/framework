@@ -25,7 +25,7 @@
 </head>
 <body>
 	<!-- Navigation -->
-	@include('components/navbar/bootstrap')
+	{{ menu('main', 'components.navbar.bootstrap') }}
 
 	<div id="wrap">
 		<div id="pt-main" class="pt-perspective">
