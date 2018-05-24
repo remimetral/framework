@@ -15,16 +15,33 @@
 * Clone the project `git clone git@github.com:remimetral/laravel.git`
 * Run `composer install` to launch your environment
 * Run `npm install` to set up the dependencies
-* Next, run `vagrant up` and access your project at [http://homestead.test](http://homestead.test).
+* Next, run `vagrant up` and access your project at [http://homestead.test](http://homestead.test)
 
 > Note: Remember, you will still need to add an `/etc/hosts` file entry for `homestead.test` or the domain of your choice. You can change the server alias or domain name in `Homestead.yaml` file, don't forget also to update your BrowserSync proxy in `webpack.mix.js` file.
+
+### Virtual Machine
+
+In order to access your virtual machine `vagrant ssh` and to run `php artisan` commands inside it, just move to code directory `cd code`.
+
+### Database & MySQL
+
+To create an SQL database into your environment and link it to your app
+
+* Access the monitor `mysql -u [username] -p;` (will prompt for password)
+* Create a new database `create database [database];`
+
+> Note: Replace `[username]` and `[database]` by the data of your choice in `.env` file.
+
+Next in order to run SQL commands on your database you have to select it `use [database];`.
+You can also directly access your database from the virtual machine `mysql -u [username] -p [database]` (will prompt for password).
+
+Other SQL commands can be retrieve here [https://gist.github.com/hofmannsven](https://gist.github.com/hofmannsven/9164408).
 
 ### Module Bundler
 
 Webpack is used through Laravel Mix for defining basic build steps for your application.
-`webpack.mix.js` is your configuration layer on top of Webpack. Most of your time will be spent here.
 
-Head over to your `webpack.mix.js` file :
+Head over to your configuration layer `webpack.mix.js`
 
 ```js
 let mix = require('laravel-mix');
@@ -58,14 +75,12 @@ If you prefer installing it with dummy run
 php artisan voyager:install --with-dummy
 ```
 
-You can now access your admin panel at [http://homestead.test/admin](http://homestead.test/admin).
-
-If you did go ahead with the dummy data, a user should have been created for you with the following login credentials:
+If you did go ahead with the dummy data, a user should have been created for you with the following login credentials
 
 * **email:** `admin@admin.com`   
 * **password:** `password`
 
-> Note: Please note that a dummy user is **only** created if there are no current users in your database.
+> Note: A dummy user is **only** created if there are no current users in your database.
 
 If you did not go with the dummy user, you may wish to assign admin privileges to an existing user.
 
@@ -82,3 +97,7 @@ php artisan voyager:admin your@email.com --create
 ```
 
 And you will be prompted for the user's name and password.
+
+You can now access your admin panel at [http://homestead.test/admin](http://homestead.test/admin).
+
+> Troubleshooting: **Missing storage symlink**. If you see this error message you need to delete `public/storage` and run `php artisan storage:link` from inside the virtual machine.
