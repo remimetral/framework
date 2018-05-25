@@ -41451,6 +41451,7 @@ __webpack_require__(141);
  */
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('modal', __webpack_require__(173));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('list-filter', __webpack_require__(192));
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('calendar', __webpack_require__(176));
 
 $.ajaxSetup({
@@ -63724,10 +63725,13 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__bundle__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__bundle__ = __webpack_require__(3);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 
 
 
@@ -63753,6 +63757,7 @@ var Home = function () {
             this.id = 'home';
             this.page = null;
             this.$document = $(document);
+            this.current = __WEBPACK_IMPORTED_MODULE_1__bundle__["a" /* deeplink */].$pages.eq(__WEBPACK_IMPORTED_MODULE_1__bundle__["a" /* deeplink */].current).find('.page_menu_id').val();
         }
 
         /**
@@ -63763,7 +63768,9 @@ var Home = function () {
         key: 'init',
         value: function init() {
             this.$document.on('page_change', this.check.bind(this));
-            //window.addEventListener("reload", this.check);
+            if (this.id == this.current) {
+                this.app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({ el: '#app' });
+            }
         }
 
         /**
@@ -63792,14 +63799,15 @@ var Home = function () {
     }, {
         key: 'reInit',
         value: function reInit() {
+            this.app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({ el: '#app' });
             this.$document.title = this.page.find('.page_title').val();
         }
     }, {
         key: 'animationIn',
         value: function animationIn() {
             //TweenMax.from(this.page.find('.bg_page'), 1, { alpha: 0, ease: Linear.easeOut });
-            TweenMax.from(this.page.find('.content'), 1, { x: -100, alpha: 0, ease: Expo.easeOut, delay: __WEBPACK_IMPORTED_MODULE_0__bundle__["a" /* deeplink */].delayBeforeAnimIn });
-            __WEBPACK_IMPORTED_MODULE_0__bundle__["a" /* deeplink */].reInitAnimation(__WEBPACK_IMPORTED_MODULE_0__bundle__["a" /* deeplink */].delayReInit);
+            TweenMax.from(this.page.find('.content'), 1, { x: -100, alpha: 0, ease: Expo.easeOut, delay: __WEBPACK_IMPORTED_MODULE_1__bundle__["a" /* deeplink */].delayBeforeAnimIn });
+            __WEBPACK_IMPORTED_MODULE_1__bundle__["a" /* deeplink */].reInitAnimation(__WEBPACK_IMPORTED_MODULE_1__bundle__["a" /* deeplink */].delayReInit);
         }
     }, {
         key: 'animationOut',
@@ -73939,6 +73947,308 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 181 */,
+/* 182 */,
+/* 183 */,
+/* 184 */,
+/* 185 */,
+/* 186 */,
+/* 187 */,
+/* 188 */,
+/* 189 */,
+/* 190 */,
+/* 191 */,
+/* 192 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(15)
+/* script */
+var __vue_script__ = __webpack_require__(193)
+/* template */
+var __vue_template__ = __webpack_require__(194)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/ListFilter.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-01ab07a6", Component.options)
+  } else {
+    hotAPI.reload("data-v-01ab07a6", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 193 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      tasks: [{ description: 'Go to the store', completed: true }, { description: 'Finish screencast', completed: false }, { description: 'Make donation', completed: false }, { description: 'Clear inbox', completed: true }, { description: 'Make dinner', completed: false }, { description: 'Clean room', completed: true }],
+      people: [{ name: "Bill Gates", category: "Tech" }, { name: "Steve Jobs", category: "Tech" }, { name: "Jeff Bezos", category: "Tech" }, { name: "George Clooney", category: "Entertainment" }, { name: "Meryl Streep", category: "Entertainment" }, { name: "Amy Poehler", category: "Entertainment" }, { name: "Lady of Lórien", category: "Fictional" }, { name: "BB8", category: "Fictional" }, { name: "Michael Scott", category: "Fictional" }],
+      selectedCategory: "All"
+    };
+  },
+
+  computed: {
+    filteredPeople: function filteredPeople() {
+      var vm = this;
+      var category = vm.selectedCategory;
+
+      if (category === "All") {
+        return vm.people;
+      } else {
+        return vm.people.filter(function (person) {
+          return person.category === category;
+        });
+      }
+    },
+    reversedMessage: function reversedMessage() {
+      return this.message.split('').reverse().join(' ');
+    },
+    incompleteTasks: function incompleteTasks() {
+      return this.tasks.filter(function (task) {
+        return !task.completed;
+      });
+    },
+    completeTasks: function completeTasks() {
+      return this.tasks.filter(function (task) {
+        return task.completed;
+      });
+    }
+  },
+  methods: {
+    addName: function addName() {
+      this.names.push(this.newName);
+      this.newName = '';
+    },
+    toggleClass: function toggleClass() {
+      this.isLoading = true;
+    },
+    toggleStatus: function toggleStatus(task) {
+      if (task.completed) {
+        task.completed = false;
+      } else {
+        task.completed = true;
+      }
+    },
+    handler: function handler() {
+      this.addName();
+      this.toggleClass();
+    }
+  },
+  mounted: function mounted() {}
+});
+
+/***/ }),
+/* 194 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "filter" }, [
+      _c("label", [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.selectedCategory,
+              expression: "selectedCategory"
+            }
+          ],
+          attrs: { type: "radio", value: "All" },
+          domProps: { checked: _vm._q(_vm.selectedCategory, "All") },
+          on: {
+            change: function($event) {
+              _vm.selectedCategory = "All"
+            }
+          }
+        }),
+        _vm._v(" All")
+      ]),
+      _vm._v(" "),
+      _c("label", [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.selectedCategory,
+              expression: "selectedCategory"
+            }
+          ],
+          attrs: { type: "radio", value: "Tech" },
+          domProps: { checked: _vm._q(_vm.selectedCategory, "Tech") },
+          on: {
+            change: function($event) {
+              _vm.selectedCategory = "Tech"
+            }
+          }
+        }),
+        _vm._v(" Tech")
+      ]),
+      _vm._v(" "),
+      _c("label", [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.selectedCategory,
+              expression: "selectedCategory"
+            }
+          ],
+          attrs: { type: "radio", value: "Entertainment" },
+          domProps: { checked: _vm._q(_vm.selectedCategory, "Entertainment") },
+          on: {
+            change: function($event) {
+              _vm.selectedCategory = "Entertainment"
+            }
+          }
+        }),
+        _vm._v(" Entertainment")
+      ]),
+      _vm._v(" "),
+      _c("label", [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.selectedCategory,
+              expression: "selectedCategory"
+            }
+          ],
+          attrs: { type: "radio", value: "Fictional" },
+          domProps: { checked: _vm._q(_vm.selectedCategory, "Fictional") },
+          on: {
+            change: function($event) {
+              _vm.selectedCategory = "Fictional"
+            }
+          }
+        }),
+        _vm._v(" Fictional")
+      ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "ul",
+      { staticClass: "people-list" },
+      _vm._l(_vm.filteredPeople, function(person) {
+        return _c("li", [_vm._v(_vm._s(person.name))])
+      })
+    ),
+    _vm._v(" "),
+    _c("h2", [_vm._v("All Tasks")]),
+    _vm._v(" "),
+    _c(
+      "ul",
+      _vm._l(_vm.tasks, function(task) {
+        return _c("li", [
+          _c("input", {
+            attrs: { type: "checkbox" },
+            domProps: { checked: task.completed },
+            on: {
+              click: function($event) {
+                _vm.toggleStatus(task)
+              }
+            }
+          }),
+          _vm._v(_vm._s(task.description))
+        ])
+      })
+    ),
+    _vm._v(" "),
+    _c("h2", [_vm._v("Complete Tasks")]),
+    _vm._v(" "),
+    _c(
+      "ul",
+      _vm._l(_vm.completeTasks, function(task) {
+        return _c("li", { domProps: { textContent: _vm._s(task.description) } })
+      })
+    ),
+    _vm._v(" "),
+    _c("h2", [_vm._v("Incomplete Tasks")]),
+    _vm._v(" "),
+    _c(
+      "ul",
+      _vm._l(_vm.incompleteTasks, function(task) {
+        return _c("li", { domProps: { textContent: _vm._s(task.description) } })
+      })
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-01ab07a6", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
