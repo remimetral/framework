@@ -73,7 +73,7 @@ export default class Deeplink {
 
         $(document).on('click', ".ajax", function(e) {
             var currentPage = _this.$pages.eq(_this.current).find('.page_menu_id').val();
-            if (currentPage === this.pathname.substr(1)) return false;
+            if (this.className.indexOf(currentPage) != -1) return false;
             if (_this.isAnimating) return false;
             _this.isAnimating = true;
             history.pushState(null, null, this.href );

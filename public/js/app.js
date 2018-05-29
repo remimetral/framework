@@ -63813,13 +63813,13 @@ var Home = function () {
         key: 'animationIn',
         value: function animationIn() {
             //TweenMax.from(this.page.find('.bg_page'), 1, { alpha: 0, ease: Linear.easeOut });
-            TweenMax.from(this.page.find('.content'), 1, { x: -100, alpha: 0, ease: Expo.easeOut, delay: __WEBPACK_IMPORTED_MODULE_1__bundle__["a" /* deeplink */].delayBeforeAnimIn });
+            TweenMax.from(this.page.find('.container_page.home'), 2, { y: '100vh', alpha: 0, ease: Expo.easeOut, delay: __WEBPACK_IMPORTED_MODULE_1__bundle__["a" /* deeplink */].delayBeforeAnimIn });
             __WEBPACK_IMPORTED_MODULE_1__bundle__["a" /* deeplink */].reInitAnimation(__WEBPACK_IMPORTED_MODULE_1__bundle__["a" /* deeplink */].delayReInit);
         }
     }, {
         key: 'animationOut',
         value: function animationOut() {
-            TweenMax.to(this.page.find('.content'), 1, { x: -100, alpha: 0, ease: Expo.easeOut });
+            TweenMax.to(this.page.find('.container_page.home'), 2, { y: '100vh', alpha: 0, ease: Expo.easeOut });
         }
     }]);
 
@@ -63914,13 +63914,13 @@ var About = function () {
         key: 'animationIn',
         value: function animationIn() {
             //TweenMax.from(this.page.find('.bg_page'), 1, { alpha: 0, ease: Linear.easeOut });
-            TweenMax.from(this.page.find('.content'), 1, { x: -100, alpha: 0, ease: Expo.easeOut, delay: __WEBPACK_IMPORTED_MODULE_1__bundle__["a" /* deeplink */].delayBeforeAnimIn });
+            TweenMax.from(this.page.find('.container_page.about'), 1, { scale: .8, ease: Expo.easeOut, delay: __WEBPACK_IMPORTED_MODULE_1__bundle__["a" /* deeplink */].delayBeforeAnimIn });
             __WEBPACK_IMPORTED_MODULE_1__bundle__["a" /* deeplink */].reInitAnimation(__WEBPACK_IMPORTED_MODULE_1__bundle__["a" /* deeplink */].delayReInit);
         }
     }, {
         key: 'animationOut',
         value: function animationOut() {
-            TweenMax.to(this.page.find('.content'), 1, { x: -100, alpha: 0, ease: Expo.easeOut });
+            TweenMax.to(this.page.find('.container_page.about'), 1, { scale: .8, ease: Expo.easeOut });
         }
     }]);
 
@@ -64311,7 +64311,7 @@ var Deeplink = function () {
 
             __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).on('click', ".ajax", function (e) {
                 var currentPage = _this.$pages.eq(_this.current).find('.page_menu_id').val();
-                if (currentPage === this.pathname.substr(1)) return false;
+                if (this.className.indexOf(currentPage) != -1) return false;
                 if (_this.isAnimating) return false;
                 _this.isAnimating = true;
                 history.pushState(null, null, this.href);
