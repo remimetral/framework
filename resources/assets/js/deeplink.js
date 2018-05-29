@@ -72,7 +72,9 @@ export default class Deeplink {
         let _this = this;
 
         $(document).on('click', ".ajax", function(e) {
-            if( _this.isAnimating ) return false;
+            var currentPage = _this.$pages.eq(_this.current).find('.page_menu_id').val();
+            if (currentPage === this.pathname.substr(1)) return false;
+            if (_this.isAnimating) return false;
             _this.isAnimating = true;
             history.pushState(null, null, this.href );
             _this.ajaxCall(this.href);
@@ -108,8 +110,8 @@ export default class Deeplink {
     }
 
     hightlightMenu(menu) {
-        TweenMax.to($('#navigation .navbar-item'), 1, {className:"-=active"});
-        TweenMax.to($('#navigation .nnavbar-item.' + menu), 1, {className:"+=active"});
+        TweenMax.to($('#navigation .ajax'), 1, {className:"-=active"});
+        TweenMax.to($('#navigation .ajax.' + menu), 1, {className:"+=active"});
     }
 
     updatePageTitle(title) {
